@@ -21,7 +21,7 @@ export function SettingsPage() {
     setTimeout(() => setSaved(false), 2000)
   }
 
-  if (!settings) return <p className="text-slate-500">Loading settings...</p>
+  if (!settings) return <p className="text-muted">Loading settings...</p>
 
   const isAdmin = user?.role === 'admin'
 
@@ -31,7 +31,7 @@ export function SettingsPage() {
 
       <form onSubmit={handleSubmit} className="card space-y-4">
         <label className="block">
-          <span className="mb-1.5 block text-sm font-medium text-slate-700">Platform Name</span>
+          <span className="mb-1.5 block text-sm font-medium text-muted">Platform Name</span>
           <input
             className="input"
             value={settings.platformName}
@@ -40,7 +40,7 @@ export function SettingsPage() {
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-sm font-medium text-slate-700">Support Email</span>
+          <span className="mb-1.5 block text-sm font-medium text-muted">Support Email</span>
           <input
             className="input"
             type="email"
@@ -50,7 +50,7 @@ export function SettingsPage() {
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-sm font-medium text-slate-700">Timezone</span>
+          <span className="mb-1.5 block text-sm font-medium text-muted">Timezone</span>
           <input
             className="input"
             value={settings.defaultTimezone}
@@ -64,9 +64,9 @@ export function SettingsPage() {
             checked={settings.maintenanceMode}
             onChange={(e) => setSettings({ ...settings, maintenanceMode: e.target.checked })}
             disabled={!isAdmin}
-            className="h-4 w-4 rounded border-slate-300"
+            className="h-4 w-4 rounded border-border bg-matte-deep accent-chrome-blue"
           />
-          <span className="text-sm font-medium text-slate-700">Maintenance mode</span>
+          <span className="text-sm font-medium text-muted">Maintenance mode</span>
         </label>
 
         {isAdmin && (
