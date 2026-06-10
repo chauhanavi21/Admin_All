@@ -98,7 +98,7 @@ export function UsersPage() {
       <div className="card overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-slate-100 text-slate-500">
+            <tr className="table-head">
               <th className="pb-3 font-medium">Name</th>
               <th className="pb-3 font-medium">Email</th>
               <th className="pb-3 font-medium">Role</th>
@@ -108,10 +108,10 @@ export function UsersPage() {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id} className="border-b border-slate-50">
-                <td className="py-3 font-medium text-slate-800">{user.name}</td>
-                <td className="py-3 text-slate-600">{user.email}</td>
-                <td className="py-3 capitalize text-slate-600">{user.role}</td>
+              <tr key={user.id} className="table-row">
+                <td className="py-3 font-medium text-text">{user.name}</td>
+                <td className="py-3 text-muted">{user.email}</td>
+                <td className="py-3 capitalize text-muted">{user.role}</td>
                 <td className="py-3">
                   <span className={`badge ${user.active ? 'badge-green' : 'badge-red'}`}>
                     {user.active ? 'Active' : 'Inactive'}
