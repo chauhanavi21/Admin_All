@@ -164,10 +164,10 @@ export const userGrowthData = [
 ]
 
 export const productByAppData = [
-  { label: 'Zaptax', value: 16, color: 'bg-indigo-500' },
-  { label: 'Noir Bean', value: 8, color: 'bg-amber-500' },
-  { label: 'Apex Ledger', value: 5, color: 'bg-emerald-500' },
-  { label: 'E-commerce', value: 12, color: 'bg-violet-500' },
+  { label: 'Zaptax', value: 16, color: 'bg-chrome-blue' },
+  { label: 'Noir Bean', value: 8, color: 'bg-chrome-yellow' },
+  { label: 'Apex Ledger', value: 5, color: 'bg-chrome-green' },
+  { label: 'E-commerce', value: 12, color: 'bg-chrome-red' },
 ]
 
 /** Merge live admin users with mock product/automation data for UI preview */
