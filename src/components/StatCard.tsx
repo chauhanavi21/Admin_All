@@ -7,16 +7,14 @@ interface StatCardProps {
   icon: LucideIcon
   trend?: number
   subtitle?: string
-  accent?: 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose' | 'cyan'
+  accent?: 'blue' | 'green' | 'yellow' | 'red'
 }
 
 const accents = {
-  indigo: 'from-indigo-500 to-violet-600 shadow-indigo-500/25',
-  violet: 'from-violet-500 to-purple-600 shadow-violet-500/25',
-  emerald: 'from-emerald-500 to-teal-600 shadow-emerald-500/25',
-  amber: 'from-amber-500 to-orange-500 shadow-amber-500/25',
-  rose: 'from-rose-500 to-pink-600 shadow-rose-500/25',
-  cyan: 'from-cyan-500 to-blue-600 shadow-cyan-500/25',
+  blue: 'from-chrome-blue to-[#3367d6] shadow-chrome-blue/30',
+  green: 'from-chrome-green to-[#2d8f47] shadow-chrome-green/30',
+  yellow: 'from-chrome-yellow to-[#e8a800] shadow-chrome-yellow/30',
+  red: 'from-chrome-red to-[#c5221f] shadow-chrome-red/30',
 }
 
 export function StatCard({
@@ -25,12 +23,13 @@ export function StatCard({
   icon: Icon,
   trend,
   subtitle,
-  accent = 'indigo',
+  accent = 'blue',
 }: StatCardProps) {
   const up = trend !== undefined && trend >= 0
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+    <div className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-surface p-5 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:border-border hover:shadow-xl hover:shadow-black/30">
+      <div className="absolute inset-x-0 top-0 h-px chrome-gradient-bar opacity-0 transition group-hover:opacity-100" />
       <div className="flex items-start justify-between gap-3">
         <div
           className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg ${accents[accent]}`}
@@ -40,7 +39,7 @@ export function StatCard({
         {trend !== undefined && (
           <span
             className={`inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-xs font-semibold ${
-              up ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'
+              up ? 'bg-chrome-green/15 text-chrome-green' : 'bg-chrome-red/15 text-chrome-red'
             }`}
           >
             {up ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
@@ -48,9 +47,9 @@ export function StatCard({
           </span>
         )}
       </div>
-      <p className="mt-4 text-3xl font-bold tracking-tight text-slate-900">{value}</p>
-      <p className="mt-1 text-sm font-medium text-slate-600">{label}</p>
-      {subtitle && <p className="mt-0.5 text-xs text-slate-400">{subtitle}</p>}
+      <p className="mt-4 text-3xl font-bold tracking-tight text-text">{value}</p>
+      <p className="mt-1 text-sm font-medium text-muted">{label}</p>
+      {subtitle && <p className="mt-0.5 text-xs text-muted-dim">{subtitle}</p>}
     </div>
   )
 }
