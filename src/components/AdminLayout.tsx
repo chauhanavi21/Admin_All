@@ -35,16 +35,19 @@ export function AdminLayout() {
   const title = pageTitles[pathname] || 'Admin'
 
   return (
-    <div className="flex min-h-screen bg-[#f4f6fb]">
-      <aside className="fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-slate-800/50 bg-[#0c1222] text-white">
+    <div className="flex min-h-screen bg-matte">
+      <aside className="fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-border-subtle bg-matte-deep text-text">
+        <div className="h-1 w-full chrome-gradient-bar" />
+
         <div className="px-6 py-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-lg shadow-indigo-500/30">
-              <LayoutDashboard className="h-5 w-5" />
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-elevated shadow-lg ring-1 ring-border">
+              <LayoutDashboard className="h-5 w-5 text-chrome-blue" />
+              <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-chrome-green ring-2 ring-matte-deep" />
             </div>
             <div>
               <p className="text-base font-bold tracking-tight">Agency Hub</p>
-              <p className="text-[11px] text-slate-400">Admin control center</p>
+              <p className="text-[11px] text-muted">Admin control center</p>
             </div>
           </div>
         </div>
@@ -56,28 +59,35 @@ export function AdminLayout() {
               to={to}
               end={end}
               className={({ isActive }) =>
-                `group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                `group relative flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-900/40'
-                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                    ? 'bg-chrome-blue/15 text-chrome-blue ring-1 ring-chrome-blue/30'
+                    : 'text-muted hover:bg-elevated hover:text-text'
                 }`
               }
             >
-              <Icon className="h-[18px] w-[18px] shrink-0" />
-              {label}
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full chrome-gradient-bar" />
+                  )}
+                  <Icon className="h-[18px] w-[18px] shrink-0" />
+                  {label}
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
-        <div className="border-t border-white/10 p-4">
-          <div className="mb-3 rounded-xl bg-white/5 px-4 py-3">
-            <p className="truncate text-sm font-semibold text-white">{user?.name}</p>
-            <p className="text-xs capitalize text-slate-400">{user?.role}</p>
+        <div className="border-t border-border-subtle p-4">
+          <div className="mb-3 rounded-xl bg-elevated px-4 py-3 ring-1 ring-border-subtle">
+            <p className="truncate text-sm font-semibold text-text">{user?.name}</p>
+            <p className="text-xs capitalize text-muted">{user?.role}</p>
           </div>
           <button
             type="button"
             onClick={logout}
-            className="flex w-full items-center gap-2 rounded-xl px-4 py-2.5 text-sm text-slate-400 transition hover:bg-white/5 hover:text-white"
+            className="flex w-full items-center gap-2 rounded-xl px-4 py-2.5 text-sm text-muted transition hover:bg-elevated hover:text-chrome-red"
           >
             <LogOut className="h-4 w-4" />
             Sign out
@@ -86,25 +96,25 @@ export function AdminLayout() {
       </aside>
 
       <div className="ml-[260px] flex min-h-screen flex-1 flex-col">
-        <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/80 px-8 py-4 backdrop-blur-xl">
+        <header className="sticky top-0 z-30 border-b border-border-subtle bg-surface/90 px-8 py-4 backdrop-blur-xl">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+              <p className="text-xs font-semibold uppercase tracking-wider chrome-gradient-text">
                 Admin Panel
               </p>
-              <h2 className="text-lg font-bold text-slate-900">{title}</h2>
+              <h2 className="text-lg font-bold text-text">{title}</h2>
             </div>
             <div className="relative hidden max-w-xs flex-1 sm:block">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
               <input
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2 pl-10 pr-4 text-sm outline-none transition focus:border-indigo-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                className="input py-2 pl-10"
                 placeholder="Search..."
                 disabled
               />
             </div>
           </div>
         </header>
-        <main className="flex-1 p-8">
+        <main className="flex-1 bg-matte p-8">
           <Outlet />
         </main>
       </div>
