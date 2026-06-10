@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 
 export function Skeleton({ className = '' }: { className?: string }) {
-  return <div className={`animate-pulse rounded-xl bg-slate-200/80 ${className}`} />
+  return <div className={`animate-pulse rounded-xl bg-elevated ${className}`} />
 }
 
 export function DashboardSkeleton() {
@@ -31,10 +31,10 @@ export function EmptyState({
   description: string
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/50 py-16 text-center">
-      <div className="mb-4 text-slate-300">{icon}</div>
-      <p className="font-semibold text-slate-700">{title}</p>
-      <p className="mt-1 max-w-sm text-sm text-slate-500">{description}</p>
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-elevated/50 py-16 text-center">
+      <div className="mb-4 text-muted-dim">{icon}</div>
+      <p className="font-semibold text-text">{title}</p>
+      <p className="mt-1 max-w-sm text-sm text-muted">{description}</p>
     </div>
   )
 }
