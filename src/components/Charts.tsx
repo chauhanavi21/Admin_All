@@ -3,7 +3,7 @@ interface BarChartProps {
   color?: string
 }
 
-export function BarChart({ data, color = 'bg-indigo-500' }: BarChartProps) {
+export function BarChart({ data, color = 'bg-chrome-blue' }: BarChartProps) {
   const max = Math.max(...data.map((d) => d.value), 1)
 
   return (
@@ -12,11 +12,11 @@ export function BarChart({ data, color = 'bg-indigo-500' }: BarChartProps) {
         <div key={item.label} className="flex flex-1 flex-col items-center gap-2">
           <div className="flex w-full flex-1 items-end">
             <div
-              className={`w-full rounded-t-lg ${color} transition-all duration-500 hover:opacity-80`}
+              className={`w-full rounded-t-lg ${color} transition-all duration-500 hover:brightness-110`}
               style={{ height: `${(item.value / max) * 100}%`, minHeight: '8px' }}
             />
           </div>
-          <span className="text-[10px] font-medium text-slate-400">{item.label}</span>
+          <span className="text-[10px] font-medium text-muted-dim">{item.label}</span>
         </div>
       ))}
     </div>
@@ -38,34 +38,34 @@ export function DonutChart({ segments }: { segments: DonutSegment[] }) {
       const start = offset
       offset += pct
       const colorMap: Record<string, string> = {
-        'bg-indigo-500': '#6366f1',
-        'bg-amber-500': '#f59e0b',
-        'bg-emerald-500': '#10b981',
-        'bg-violet-500': '#8b5cf6',
+        'bg-chrome-blue': '#4285f4',
+        'bg-chrome-yellow': '#fbbc04',
+        'bg-chrome-green': '#34a853',
+        'bg-chrome-red': '#ea4335',
       }
-      return `${colorMap[seg.color] || '#6366f1'} ${start}% ${offset}%`
+      return `${colorMap[seg.color] || '#4285f4'} ${start}% ${offset}%`
     })
     .join(', ')
 
   return (
     <div className="flex items-center gap-6">
       <div
-        className="relative h-28 w-28 shrink-0 rounded-full"
+        className="relative h-28 w-28 shrink-0 rounded-full shadow-lg shadow-black/30"
         style={{
           background: `conic-gradient(${gradient})`,
         }}
       >
-        <div className="absolute inset-3 flex flex-col items-center justify-center rounded-full bg-white">
-          <span className="text-xl font-bold text-slate-900">{total}</span>
-          <span className="text-[10px] text-slate-400">total</span>
+        <div className="absolute inset-3 flex flex-col items-center justify-center rounded-full bg-surface">
+          <span className="text-xl font-bold text-text">{total}</span>
+          <span className="text-[10px] text-muted-dim">total</span>
         </div>
       </div>
       <ul className="space-y-2">
         {segments.map((seg) => (
           <li key={seg.label} className="flex items-center gap-2 text-sm">
             <span className={`h-2.5 w-2.5 rounded-full ${seg.color}`} />
-            <span className="text-slate-600">{seg.label}</span>
-            <span className="font-semibold text-slate-900">{seg.value}</span>
+            <span className="text-muted">{seg.label}</span>
+            <span className="font-semibold text-text">{seg.value}</span>
           </li>
         ))}
       </ul>
