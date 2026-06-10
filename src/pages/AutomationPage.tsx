@@ -70,29 +70,29 @@ export function AutomationPage() {
       />
 
       {toast && (
-        <div className="rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm font-medium text-indigo-800">
+        <div className="rounded-xl border border-chrome-green/30 bg-chrome-green/10 px-4 py-3 text-sm font-medium text-chrome-green">
           {toast}
         </div>
       )}
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-2xl border border-slate-200 bg-white p-5">
-          <p className="text-sm text-slate-500">Total rules</p>
-          <p className="mt-1 text-3xl font-bold text-slate-900">{rules.length}</p>
+        <div className="rounded-2xl border border-border-subtle bg-surface p-5">
+          <p className="text-sm text-muted">Total rules</p>
+          <p className="mt-1 text-3xl font-bold text-text">{rules.length}</p>
         </div>
-        <div className="rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5">
-          <p className="text-sm text-emerald-700">Active</p>
-          <p className="mt-1 text-3xl font-bold text-emerald-800">{enabledCount}</p>
+        <div className="rounded-2xl border border-chrome-green/30 bg-chrome-green/5 p-5">
+          <p className="text-sm text-chrome-green">Active</p>
+          <p className="mt-1 text-3xl font-bold text-chrome-green">{enabledCount}</p>
         </div>
-        <div className="rounded-2xl border border-indigo-200 bg-indigo-50/50 p-5">
-          <p className="text-sm text-indigo-700">Total runs</p>
-          <p className="mt-1 text-3xl font-bold text-indigo-800">{totalRuns}</p>
+        <div className="rounded-2xl border border-chrome-blue/30 bg-chrome-blue/5 p-5">
+          <p className="text-sm text-chrome-blue">Total runs</p>
+          <p className="mt-1 text-3xl font-bold text-chrome-blue">{totalRuns}</p>
         </div>
       </div>
 
-      <div className="rounded-2xl border border-amber-200/80 bg-gradient-to-r from-amber-50 to-orange-50 p-5">
-        <p className="text-sm font-semibold text-amber-900">Automation ideas you can enable later</p>
-        <ul className="mt-2 grid gap-1 text-sm text-amber-800 sm:grid-cols-2">
+      <div className="rounded-2xl border border-chrome-yellow/20 bg-gradient-to-r from-chrome-yellow/5 to-chrome-red/5 p-5">
+        <p className="text-sm font-semibold text-chrome-yellow">Automation ideas you can enable later</p>
+        <ul className="mt-2 grid gap-1 text-sm text-muted sm:grid-cols-2">
           <li>• Low stock email alerts</li>
           <li>• New user welcome emails</li>
           <li>• Daily sales PDF reports</li>
@@ -110,8 +110,8 @@ export function AutomationPage() {
               key={rule.id}
               className={`rounded-2xl border p-6 transition-all duration-300 ${
                 rule.enabled
-                  ? 'border-indigo-200/80 bg-white shadow-sm ring-1 ring-indigo-100/50'
-                  : 'border-slate-200 bg-slate-50/50 opacity-90'
+                  ? 'border-chrome-blue/30 bg-surface shadow-lg shadow-black/20 ring-1 ring-chrome-blue/10'
+                  : 'border-border-subtle bg-elevated/40 opacity-80'
               }`}
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
@@ -119,31 +119,29 @@ export function AutomationPage() {
                   <div
                     className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${
                       rule.enabled
-                        ? 'bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/25'
-                        : 'bg-slate-200 text-slate-500'
+                        ? 'bg-gradient-to-br from-chrome-blue to-[#3367d6] text-white shadow-lg shadow-chrome-blue/25'
+                        : 'bg-elevated-hover text-muted'
                     }`}
                   >
                     <Icon className="h-6 w-6" />
                   </div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-lg font-bold text-slate-900">{rule.name}</h3>
+                      <h3 className="text-lg font-bold text-text">{rule.name}</h3>
                       <span className={`badge ${rule.enabled ? 'badge-green' : 'badge-gray'}`}>
                         {rule.enabled ? 'Active' : 'Paused'}
                       </span>
                     </div>
-                    <p className="mt-1 text-sm text-slate-600">{rule.description}</p>
-                    <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-500">
+                    <p className="mt-1 text-sm text-muted">{rule.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-4 text-xs text-muted-dim">
                       <span>
-                        <strong className="text-slate-700">Trigger:</strong> {rule.trigger}
+                        <strong className="text-muted">Trigger:</strong> {rule.trigger}
                       </span>
                       <span>
-                        <strong className="text-slate-700">Action:</strong> {rule.action}
+                        <strong className="text-muted">Action:</strong> {rule.action}
                       </span>
                       {rule.lastRun && (
-                        <span>
-                          Last run: {new Date(rule.lastRun).toLocaleString()}
-                        </span>
+                        <span>Last run: {new Date(rule.lastRun).toLocaleString()}</span>
                       )}
                       <span>{rule.runsCount} runs</span>
                     </div>
@@ -163,13 +161,13 @@ export function AutomationPage() {
                   <button
                     type="button"
                     onClick={() => toggleRule(rule.id)}
-                    className="rounded-xl p-2 text-indigo-600 transition hover:bg-indigo-50"
+                    className="rounded-xl p-2 text-chrome-blue transition hover:bg-chrome-blue/10"
                     aria-label={rule.enabled ? 'Disable' : 'Enable'}
                   >
                     {rule.enabled ? (
                       <ToggleRight className="h-8 w-8" />
                     ) : (
-                      <ToggleLeft className="h-8 w-8 text-slate-400" />
+                      <ToggleLeft className="h-8 w-8 text-muted" />
                     )}
                   </button>
                 </div>
