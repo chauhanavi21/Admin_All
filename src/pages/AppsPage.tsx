@@ -71,7 +71,9 @@ export function AppsPage() {
       />
 
       {message && (
-        <div className="rounded-xl bg-indigo-50 px-4 py-3 text-sm text-indigo-700">{message}</div>
+        <div className="rounded-xl border border-chrome-blue/30 bg-chrome-blue/10 px-4 py-3 text-sm text-chrome-blue">
+          {message}
+        </div>
       )}
 
       {showForm && (
@@ -127,14 +129,14 @@ export function AppsPage() {
           <div key={app.id} className="card">
             <div className="mb-3 flex items-start justify-between gap-3">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">{app.name}</h3>
-                <p className="text-sm text-slate-500">{app.slug}</p>
+                <h3 className="text-lg font-bold text-text">{app.name}</h3>
+                <p className="text-sm text-muted">{app.slug}</p>
               </div>
               <StatusBadge status={app.status} />
             </div>
-            <p className="mb-4 text-sm text-slate-600">{app.description || 'No description'}</p>
+            <p className="mb-4 text-sm text-muted">{app.description || 'No description'}</p>
             {app.baseUrl && (
-              <p className="mb-4 flex items-center gap-2 text-sm text-indigo-600">
+              <p className="mb-4 flex items-center gap-2 text-sm text-chrome-blue">
                 <Link2 className="h-4 w-4" />
                 {app.baseUrl}
               </p>
