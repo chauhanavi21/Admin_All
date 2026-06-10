@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": "0d7c6438-5044-420b-a623-ba0daf1a239d",
+      "name": "Super Admin",
+      "email": "admin@agency.local",
+      "passwordHash": "$2b$10$6QgL0oFcNPrYqa/WzZmxFOlSzwoejR0Rnw/d/n/p6CiTZUY7DzvG6",
+      "role": "admin",
+      "active": true,
+      "createdAt": "2026-06-10T22:52:56.186Z",
+      "updatedAt": "2026-06-10T22:52:56.186Z"
+    }
+  ],
+  "apps": [
+    {
+      "id": "333b6d29-c8d8-430c-b1c0-f8c9612e129a",
+      "name": "Zaptax",
+      "slug": "zaptax",
+      "description": "Business & tax compliance site — connect API later",
+      "baseUrl": "http://localhost:5173",
+      "apiKey": "",
+      "status": "pending",
+      "metadata": {
+        "folder": "dow/zaptax-react"
+      },
+      "createdAt": "2026-06-10T22:52:56.186Z",
+      "updatedAt": "2026-06-10T22:52:56.186Z"
+    },
+    {
+      "id": "9502dac1-c885-4561-8ff5-490f8ecba48e",
+      "name": "Noir Bean Coffee",
+      "slug": "noir-bean-coffee",
+      "description": "Coffee shop app — connect API later",
+      "baseUrl": "http://localhost:5174",
+      "apiKey": "",
+      "status": "pending",
+      "metadata": {
+        "folder": "noir-bean-coffee"
+      },
+      "createdAt": "2026-06-10T22:52:56.186Z",
+      "updatedAt": "2026-06-10T22:52:56.186Z"
+    }
+  ],
+  "settings": {
+    "platformName": "Agency Admin",
+    "supportEmail": "admin@agency.local",
+    "maintenanceMode": false,
+    "defaultTimezone": "Asia/Kolkata",
+    "updatedAt": "2026-06-09T00:00:00.000Z"
+  },
+  "activityLog": []
+}
